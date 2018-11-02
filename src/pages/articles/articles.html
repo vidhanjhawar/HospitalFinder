@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ArticlesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>articles</ion-title>
+  </ion-navbar>
+
+</ion-header>
+ 
+<ion-content padding>
+  <div *ngFor="let art of article | async">
+    <h3>{{art}}</h3>
+  </div>
+  <ion-card>
+    <img src="../assets/imgs/art1.jpeg"/>
+    <ion-card-content>
+      <ion-card-title>
+        What Is a Healthy Diet?
+        </ion-card-title>
+      <p>
+        Before deciding what form of dietary intervention to make, a full evaluation of the past and present circumstances of the person with any disease or condition is necessary. Such an evaluation should take account of the following
+      </p>
+    </ion-card-content>
+    <button ion-button id="ReadMore">share</button>
+  </ion-card>
+</ion-content>

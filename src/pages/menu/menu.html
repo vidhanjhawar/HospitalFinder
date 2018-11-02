@@ -1,0 +1,51 @@
+<!--
+  Generated template for the MenuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Welcome to Hospital Finder</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <h2>Menu
+    <button ion-button id="login" (click)="gettoLoginPage()">Login/Sign Up</button>
+  </h2>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card id="imgicon" (click)="gettoHospitalPage()">
+            <ion-card-content>
+              <img  src="../assets/imgs/SearchHospital.jpg"/>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col>    
+          <ion-card id="imgicon">
+            <ion-card-content>
+              <img  src="../assets/imgs/DoctorSearch.jpg"/>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>    
+            <ion-card id="imgicon" (click)="gettoArticlesPage()">
+              <ion-card-content>
+                <img  src="../assets/imgs/articles.jpeg"/>
+              </ion-card-content>
+            </ion-card>
+        </ion-col>
+      </ion-row>
+   
+  </ion-grid>>
+</ion-content>
