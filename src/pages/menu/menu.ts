@@ -3,6 +3,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { SearchHospitalPage } from '../search-hospital/search-hospital';
 import { ArticlesPage } from '../articles/articles';
+import { SearchDoctorPage } from '../search-doctor/search-doctor';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase/app';
+import { FireAuthenticationProvider } from '../../providers/fire-authentication/fire-authentication';
+import { EditprofilePage } from '../editprofile/editprofile';
+import { ProfilePage } from '../profile/profile';
+
 
 /**
  * Generated class for the MenuPage page.
@@ -17,8 +24,12 @@ import { ArticlesPage } from '../articles/articles';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  user: any;
+  constructor(public fAuth: FireAuthenticationProvider, public navCtrl: NavController, public navParams: NavParams, public afAuth: AngularFireAuth) {
+    afAuth.authState.subscribe(user => {
+			this.user = user;
+		});
   }
 
   gettoLoginPage() {
@@ -33,4 +44,15 @@ export class MenuPage {
     this.navCtrl.push(ArticlesPage);
   }
 
+  gettoDoctorsPage() {
+    this.navCtrl.push(SearchDoctorPage);
+  }
+
+  gettoProfilePage() {
+    this.navCtrl.push(ProfilePage);
+  }
+
+  Logout() {
+    this.fAuth.logoutUser();
+  }
 }  

@@ -1,0 +1,71 @@
+<!--
+  Generated template for the DoctorinfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>doctorinfo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col col-12 id="part1">
+      <ion-thumbnail item-start>
+        <img id="profilepic" src='../assets/imgs/doctor.jpg'>
+      </ion-thumbnail>
+      <div id="prof">
+        <h3><b>{{currentDoctor?.Name}}</b></h3>
+        <p>{{currentDoctor?.Qualifications}},</p>
+        <p>Experience : {{currentDoctor?.Experience}} years</p>
+        <button ion-button color="secondary">Book Appointment</button>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div id="details">
+    <ion-row>
+      <ion-col col-9>
+        <h5><b>{{currentDoctor?.Hospital_name}}</b></h5>
+        <p>Address : {{currentDoctor?.Hospital_address.address}}<br/>Landmark : {{currentDoctor?.Hospital_address.landmark}}<br/>
+            {{currentDoctor?.Hospital_address.city}}, {{currentDoctor?.Hospital_address.pincode}}<br/>
+            {{currentDoctor?.Hospital_address.state}}</p>
+        <hr/> 
+      </ion-col>
+      <ion-col col-3>
+        <p><b>Fees: {{currentDoctor?.Fees}}</b></p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <h4><b>Specializations</b></h4>
+        <ul *ngFor="let specs of currentDoctor?.Specialization">
+          <li>{{specs}}</li>
+        </ul>
+      </ion-col>
+      <ion-col col-6>
+        <h4><b>Availability</b></h4>
+        <p><b>Mon - Fri</b></p>
+          <div *ngFor="let avail of currentDoctor?.Availability.MonFri">
+            <p>{{avail}}</p>
+          </div>
+        <p><b>Sat</b></p>
+          <div *ngFor="let avail of currentDoctor?.Availability.Sat">
+            <p>{{avail}}</p>
+          </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <h4><b>Education</b></h4>
+        <ul *ngFor="let edu of currentDoctor?.Education">
+          <li>{{edu}}</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </div>  
+</ion-content>

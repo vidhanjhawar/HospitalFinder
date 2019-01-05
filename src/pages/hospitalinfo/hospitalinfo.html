@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>hospitalinfo</ion-title>
+    <ion-title>{{info[0]}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,12 +17,13 @@
 
   <ion-card>
     <ion-card-header>
-      <h2>{{info[0]}}</h2>
+      <h1><b>{{info[0]}}</b> <h2 float-right><b>Rating : {{info[5]}}</b></h2></h1>
     </ion-card-header>
     <ion-card-content>
-      <h3 id="sep">Address : {{info[1]}}</h3>
-      <h3 id="sep">Phone No.: {{info[2]}}</h3>
-      <h3 id="sep">Website : {{info[3]}}</h3>
+      <h3 id="sep"><b>Address</b> : {{info[1]}}</h3><br/>
+      <h3 id="sep"><b>Phone No.</b>: {{info[2]}}</h3><br/>
+      <h3 id="sep"><b>Opening hours</b>:<br/>{{info[4]?.weekday_text[0]}}<br/>{{info[4]?.weekday_text[1]}}<br/>{{info[4]?.weekday_text[2]}}<br/>{{info[4]?.weekday_text[3]}}<br/>{{info[4]?.weekday_text[4]}}<br/>{{info[4]?.weekday_text[5]}}<br/>{{info[4]?.weekday_text[6]}}</h3><br/>
+      <h3 id="sep"><b>Website </b>: {{info[3]}}</h3>
     </ion-card-content>
   </ion-card>
 

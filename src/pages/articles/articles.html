@@ -7,25 +7,27 @@
 <ion-header>
 
   <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
     <ion-title>articles</ion-title>
   </ion-navbar>
 
 </ion-header>
- 
+
 <ion-content padding>
-  <div *ngFor="let art of article | async">
-    <h3>{{art}}</h3>
+  <div *ngFor="let art of articleList | async">
+    <ion-card (click)="ReadFullArticle(art)">
+      <div id="side">
+        <img src={{art.image}}/>
+      </div>
+        <ion-card-content>
+          <ion-card-title>
+              <h4><b>{{art.title}}</b></h4>
+          </ion-card-title>
+          <p>writer: {{art.author}}</p>
+          <p>{{art.description[0] | slice:0:150}}...</p>
+        </ion-card-content>
+    </ion-card>
   </div>
-  <ion-card>
-    <img src="../assets/imgs/art1.jpeg"/>
-    <ion-card-content>
-      <ion-card-title>
-        What Is a Healthy Diet?
-        </ion-card-title>
-      <p>
-        Before deciding what form of dietary intervention to make, a full evaluation of the past and present circumstances of the person with any disease or condition is necessary. Such an evaluation should take account of the following
-      </p>
-    </ion-card-content>
-    <button ion-button id="ReadMore">share</button>
-  </ion-card>
 </ion-content>

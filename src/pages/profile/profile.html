@@ -1,0 +1,50 @@
+<!--
+  Generated template for the DoctorinfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>Profile</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+    <ion-row>
+      <ion-col col-12 id="part1">
+          <ion-icon id="edit" ios="ios-create" md="md-create" float-right (click)="EditProfile()"></ion-icon>
+        <ion-thumbnail item-start>
+          <img id="profilepic" src='../assets/imgs/user.png'>
+        </ion-thumbnail>
+        <div id="prof">
+          <h3><b>{{(profileData | async)?.Username}}</b></h3>
+          <p>{{(profileData | async)?.FirstName}} {{(profileData| async)?.LastName}}</p>
+          <p>Blood Group : {{(profileData | async )?.BloodGroup}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div id="details">
+      <ion-row>
+        <ion-col col-12>
+          <p><b>Address</b> : {{(profileData | async)?.Address}} {{(profileData | async)?.Pincode}}</p>
+          <hr/>
+        </ion-col>
+        <ion-col col-12>
+          <p>DOB: {{(profileData | async)?.DOB}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
+          <h6><b>Contact Details</b></h6>
+            <p>Mobile Number : {{(profileData | async)?.Mobile}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-content>

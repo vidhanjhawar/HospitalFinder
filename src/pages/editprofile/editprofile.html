@@ -1,0 +1,53 @@
+<!--
+  Generated template for the EditprofilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h4 style="text-align: center;">Update Details</h4>
+  <ion-item>
+    <ion-label floating>Username</ion-label>
+    <ion-input [(ngModel)]="profile.Username"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>First Name</ion-label>
+      <ion-input [(ngModel)]="profile.FirstName"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Last Name</ion-label>
+      <ion-input [(ngModel)]="profile.LastName"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>date of Birth</ion-label>
+      <ion-input [(ngModel)]="profile.DOB"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input [(ngModel)]="profile.Address"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Pincode</ion-label>
+      <ion-input [(ngModel)]="profile.PinCode"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Mobile Number</ion-label>
+      <ion-input [(ngModel)]="profile.Mobile"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Blood Group</ion-label>
+      <ion-input [(ngModel)]="profile.BloodGroup"></ion-input>
+  </ion-item>
+  <div text-center>
+  <button ion-button color="primary" (click)="setProfileData()" style="margin-top: 20px;">Update</button> 
+  </div> 
+</ion-content>

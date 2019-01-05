@@ -20,8 +20,8 @@ declare var google: any;
 export class SearchHospitalPage {
   @ViewChild("search")
 
-  
-  public searchElementRef; 
+
+  public searchElementRef;
   hospitals: any[];
   image: any;
   global: any;
@@ -31,12 +31,12 @@ export class SearchHospitalPage {
   }
 
   ionViewDidLoad() {
-    this.mapsAPILoader.load().then(() => { 
+    this.mapsAPILoader.load().then(() => {
       let nativeHomeInputBox = document.getElementById('searching').getElementsByTagName('input')[0];
       let autocomplete = new google.maps.places.Autocomplete(nativeHomeInputBox, {
-        types: ['address'] 
+        types: ['address']
         });
-   
+
         this.getMyLocation(autocomplete);
 
         autocomplete.addListener("place_changed", () => {
@@ -45,20 +45,20 @@ export class SearchHospitalPage {
             var loc: any;
             let place= autocomplete.getPlace();
             geocoder = new google.maps.Geocoder();
-              var address = place.formatted_address; 
+              var address = place.formatted_address;
               console.log(place);
               geocoder.geocode( { 'address': address},(results, status)=> {
-                var coord={}; 
+                var coord={};
                 if (status == google.maps.GeocoderStatus.OK) {
 
                 console.log("Latitude: "+results[0].geometry.location.lat());
                 console.log("Longitude: "+results[0].geometry.location.lng());
-              loc={lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng()};                    
+              loc={lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng()};
             }
             this.getInfo(loc);
           });
-            });            
-          }); 
+            });
+          });
   });
 }
 
@@ -89,25 +89,25 @@ export class SearchHospitalPage {
     });
     var service = new google.maps.places.PlacesService(Mymap);
     this.globalservice=service;
-    service.nearbySearch({location: loc,radius : 1500, type:['hospital']},(field)=> {
+    service.nearbySearch({location: indore,radius : 1500, type:['hospital']},(field)=> {
       let i:any;
       var local=new Array();
       for(i=0;i<field.length;i++) {
         local.push([i,field[i].name,field[i].vicinity,field[i].place_id]);
-      this.hospitals=local.slice();  
+      this.hospitals=local.slice();
   }
     })
   }
-  
+
   getPlaceID(index) {
     this.globalservice.getDetails({placeId: this.hospitals[index][3]},(result,status)=>{
       console.log(index);
       console.log(result);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        this.navCtrl.push(HospitalinfoPage,{ data : [result.name,result.formatted_address,result.formatted_phone_number,result.website]});
+        this.navCtrl.push(HospitalinfoPage,{ data : [result.name,result.formatted_address,result.formatted_phone_number,result.website,result.opening_hours,result.rating,result.photos[0]]});
       }
       else{
-        this.navCtrl.push(HospitalinfoPage,{ data : ['NA','NA','NA']});
+        this.navCtrl.push(HospitalinfoPage,{ data : ['NA','NA','NA','NA','NA','NA','NA']});
       }
   })
   }

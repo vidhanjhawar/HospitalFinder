@@ -1,0 +1,35 @@
+<!--
+  Generated template for the DoctorresultPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>{{info}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col col-12 id="head">
+      <h3><b>Search Results</b></h3>
+    </ion-col>
+      <div *ngFor = "let docts of doctorList | async">
+        <ion-list (click)="showDetails(docts)">
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src='../assets/imgs/doctor.jpg'>
+            </ion-thumbnail>
+            <h2>{{docts.Name}}</h2>
+            <p>{{docts.Specialization}},</p>
+          </ion-item>
+      </ion-list>
+    </div>
+  </ion-row>
+</ion-content>

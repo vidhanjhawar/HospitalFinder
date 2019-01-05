@@ -6,46 +6,33 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Welcome to Hospital Finder</ion-title>
-  </ion-navbar>
+      <button ion-button menuToggle icon-only class="menuButton">
+          <ion-icon name="menu"></ion-icon>
+        </button>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div>
-    <h2>Menu
-    <button ion-button id="login" (click)="gettoLoginPage()">Login/Sign Up</button>
-  </h2>
-  </div>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card id="imgicon" (click)="gettoHospitalPage()">
-            <ion-card-content>
-              <img  src="../assets/imgs/SearchHospital.jpg"/>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
 
-        <ion-col>    
-          <ion-card id="imgicon">
-            <ion-card-content>
-              <img  src="../assets/imgs/DoctorSearch.jpg"/>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>    
-            <ion-card id="imgicon" (click)="gettoArticlesPage()">
-              <ion-card-content>
-                <img  src="../assets/imgs/articles.jpeg"/>
-              </ion-card-content>
-            </ion-card>
-        </ion-col>
-      </ion-row>
-   
-  </ion-grid>>
+
+<ion-menu [content]="mycontent">
+    <ion-content>
+      <ion-thumbnail item-start text-center>
+        <img id="profilepic" src='../assets/imgs/user.png'>
+      </ion-thumbnail>
+      <br/>
+      <h3>Welcome</h3>
+      <ion-list>
+          <ion-item  detail-none (click)="gettoHospitalPage()">Search Hospital</ion-item>
+          <ion-item  detail-none (click)="gettoDoctorsPage()">Search Doctor</ion-item>
+          <ion-item  detail-none (click)="gettoArticlesPage()">Health Articles</ion-item>
+          <ion-item  detail-none (click)="gettoProfilePage()">My Profile</ion-item>
+          <ion-item  detail-none (click)="Logout()">Logout</ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-nav #mycontent type="overlay"></ion-nav>
 </ion-content>
