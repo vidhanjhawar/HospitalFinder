@@ -18,10 +18,10 @@ export class HospitalinfoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.info=navParams.get('data');
+    console.log(this.info);
   }
 
   ionViewDidLoad() {
-    console.log(this.info);
   }
 
 }

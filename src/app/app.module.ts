@@ -14,7 +14,6 @@ import { Firebase } from '@ionic-native/firebase';
 import { AgmCoreModule } from '@agm/core';
 import { SearchHospitalPage } from '../pages/search-hospital/search-hospital';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { MenuPage } from '../pages/menu/menu';
 import { ArticlesPage } from '../pages/articles/articles';
 import { FirearticlesProvider } from '../providers/firearticles/firearticles';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +27,7 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
 import { ProfilePage } from '../pages/profile/profile';
 
 const fireAuth = {
-  apiKey: "AIzaSyAhZXFxVpPN7vCKhKAVKH8r9SPQ3sykdmw",
+  apiKey: "AIzaSyCdFBbnJFAH-1Sbb0YOS9araL_nf103s8M",
   authDomain: "hospitalfinder-219716.firebaseapp.com",
   databaseURL: "https://hospitalfinder-219716.firebaseio.com",
   projectId: "hospitalfinder-219716",
@@ -43,7 +42,6 @@ const fireAuth = {
     HomePage,
     SearchHospitalPage,
     HospitalinfoPage,
-    MenuPage,
     ArticlesPage,
     FullarticlePage,
     SearchDoctorPage,
@@ -61,7 +59,7 @@ const fireAuth = {
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyBm2pES3FKpjopf53fchBnqlxT-Am0bClI",
+      apiKey: "AIzaSyBlPHCxdtUottt_5BPIwwLNhf--ZxPL0og",
       libraries: ["places"]
   })
   ],
@@ -71,7 +69,6 @@ const fireAuth = {
     HomePage,
     SearchHospitalPage,
     HospitalinfoPage,
-    MenuPage,
     ArticlesPage,
     FullarticlePage,
     SearchDoctorPage,

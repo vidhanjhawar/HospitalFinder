@@ -4,10 +4,11 @@
         <img id="profilepic" src='../assets/imgs/user.png'>
       </ion-thumbnail>
       <br/>
-      <h3 text-center>Welcome</h3>
+      <p text-center *ngIf="check"><b>Welcome {{(profileData | async)?.Username}}</b></p>
+      <button style="margin-left: 28%" ion-button *ngIf="!check" (click)="login()" menuClose>Login/SignUp</button>
       <ion-list>
-          <ion-item  *ngFor="let page of pages" (click)="openPage(page)">{{page.title}}</ion-item>
-          <ion-item  (click)="Logout()">Sign Out</ion-item>
+          <ion-item  *ngFor="let page of pages" (click)="openPage(page)" menuClose>{{page.title}}</ion-item>
+          <ion-item  (click)="Logout()" menuClose>Sign Out</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>

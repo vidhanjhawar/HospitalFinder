@@ -2,7 +2,9 @@ import { Component,ViewChild } from '@angular/core';
 import { NavController,NavParams,AlertController } from 'ionic-angular';
 import { FireAuthenticationProvider } from '../../providers/fire-authentication/fire-authentication';
 import { SearchHospitalPage } from '../../pages/search-hospital/search-hospital';
-import { MenuPage } from '../menu/menu';
+import { Events } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'page-home',
@@ -23,13 +25,14 @@ export class HomePage {
     alert.present();
   }
 
-  constructor(public fAuth: FireAuthenticationProvider ,public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public afAuth: AngularFireAuth, public events: Events, public fAuth: FireAuthenticationProvider ,public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
     this.log='LogIn';
   }
-  
+
   Login() {
     this.fAuth.loginUser(this.user.value,this.passwd.value).then( data => {
-      this.navCtrl.setRoot(MenuPage);
+      this.navCtrl.setRoot(SearchHospitalPage);
+        this.events.publish('user:created', true);
     })
     .catch( error => {
       this.showAlert('Error', error.message);
@@ -44,5 +47,4 @@ export class HomePage {
       this.showAlert('Error', error.message);
     });
   }
-  
 }

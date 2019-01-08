@@ -10,7 +10,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { ArticlesPage } from '../pages/articles/articles';
 import { SearchDoctorPage } from '../pages/search-doctor/search-doctor';
 import { FireAuthenticationProvider } from '../providers/fire-authentication/fire-authentication';
-
+import { Events } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,9 +21,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage:any = SearchHospitalPage;
 
+  profileData: any=null;
+  check: boolean = false;
+
   pages: Array<{title: String, component: any}>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public afAuth: AngularFireAuth, public auth: FireAuthenticationProvider) {
+  constructor( public afDatabase: AngularFireDatabase, public events: Events,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public afAuth: AngularFireAuth, public auth: FireAuthenticationProvider) {
 
     this.pages = [
       { title: 'Search Hospital', component: SearchHospitalPage},
@@ -37,6 +41,7 @@ export class MyApp {
         this.rootPage = SearchHospitalPage;
         authObserver.unsubscribe();
         console.log(user);
+        this.check=true;
       } else {
         this.rootPage = HomePage;
         authObserver.unsubscribe();
@@ -48,6 +53,16 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    events.subscribe('user:created', (condition) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      this.check=condition;
+      if(this.check===true) {
+        this.afAuth.authState.take(1).subscribe(data=>{
+        this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();})
+
+      }
+    });
   }
 
   openPage(page) {
@@ -56,6 +71,12 @@ export class MyApp {
 
   Logout() {
     this.auth.logoutUser();
+    this.check=false;
+    this.nav.setRoot(HomePage);
+  }
+
+  login() {
+    this.nav.setRoot(HomePage);
   }
 }
 
